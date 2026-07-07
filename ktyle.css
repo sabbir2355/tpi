@@ -1,0 +1,986 @@
+
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9fafc;
+    }
+
+    /* Navbar Logo */
+    .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: -0.3px;
+    flex-shrink: 0;
+    font-size: 15px;
+}
+
+    .brand-logo {
+      height: 40px;
+      width: auto;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 576px) {
+      .brand-logo {
+        height: 32px;
+      }
+      .navbar-brand {
+        font-size: 1.2rem;
+      }
+    }
+
+    .navbar-brand span {
+      color: #f5b042;
+    }
+
+    /* ========== FIXED MENU BAR STYLES - সব মেনু এক লাইনে ========== */
+    .navbar {
+      background: white !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+    }
+
+    /* কন্টেইনার ফিক্স */
+    .navbar .container {
+      max-width: 100%;
+      padding: 0 1.5rem;
+    }
+
+    /* ডেস্কটপ মোডের জন্য - সব মেনু এক লাইনে রাখার ফিক্স */
+    @media (min-width: 1200px) {
+      .navbar-nav {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 0.25rem !important;
+      }
+      
+      .navbar-nav .nav-item {
+        flex-shrink: 0;
+      }
+      
+      .navbar-nav .nav-link {
+        white-space: nowrap;
+        padding: 0.5rem 0.85rem !important;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+      .navbar-nav {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-end;
+        gap: 0.15rem !important;
+      }
+      
+      .navbar-nav .nav-link {
+        white-space: nowrap;
+        padding: 0.5rem 0.7rem !important;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      .navbar-nav {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 0.25rem !important;
+      }
+      
+      .navbar-nav .nav-link {
+        padding: 0.4rem 0.6rem !important;
+        font-size: 0.75rem;
+      }
+    }
+
+    .navbar-nav .nav-item {
+      position: relative;
+    }
+
+   .navbar-nav .nav-link {
+    font-weight: 500;
+    border-radius: 50px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #1e293b !important;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-size: 12px;
+}
+
+    /* Hover Effect - Background Slide */
+    .navbar-nav .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1e5a6f, #f5b042);
+      border-radius: 50px;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.35s ease;
+      z-index: -1;
+    }
+
+    .navbar-nav .nav-link:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Hover Effect - Text Color Fixed */
+    .navbar-nav .nav-link:hover {
+      color: white !important;
+      transform: translateY(-2px);
+    }
+
+    .navbar-nav .nav-link:hover i,
+    .navbar-nav .nav-link:hover span {
+      color: white !important;
+    }
+
+    /* Active Link Style */
+    .navbar-nav .nav-link.active {
+      background: linear-gradient(135deg, #1e5a6f, #f5b042);
+      color: white !important;
+      box-shadow: 0 4px 12px rgba(30, 90, 111, 0.3);
+    }
+
+    .navbar-nav .nav-link.active::before {
+      display: none;
+    }
+
+    /* Icon spacing */
+    .navbar-nav .nav-link i {
+      margin-right: 5px;
+      transition: all 0.3s ease;
+    }
+
+    /* Special Student Login Trigger Button */
+    .student-login-trigger {
+      background: linear-gradient(135deg, #1e5a6f, #f5b042);
+      color: white !important;
+      box-shadow: 0 2px 8px rgba(30, 90, 111, 0.25);
+    }
+
+    .student-login-trigger::before {
+      display: none;
+    }
+
+    .student-login-trigger:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(30, 90, 111, 0.35);
+      color: white !important;
+    }
+
+    /* Responsive Navbar Toggle */
+    .navbar-toggler {
+      border: none;
+      background: #f1f5f9;
+      transition: all 0.3s;
+    }
+
+    .navbar-toggler:hover {
+      background: #e2e8f0;
+      transform: scale(1.02);
+    }
+
+    /* মোবাইল ভিউ */
+    @media (max-width: 767px) {
+      .navbar-collapse {
+        margin-top: 1rem;
+      }
+      
+      .navbar-nav {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+      }
+      
+      .navbar-nav .nav-link {
+        text-align: center;
+        display: block;
+      }
+      
+      .navbar-nav .nav-link::before {
+        display: none;
+      }
+      
+      .navbar-nav .nav-link:hover {
+        background: linear-gradient(135deg, #1e5a6f, #f5b042);
+        color: white !important;
+      }
+      
+      .student-login-trigger {
+        display: block;
+        text-align: center;
+      }
+    }
+    /* ========== END MENU BAR STYLES ========== */
+
+    /* Buttons */
+    .btn-custom {
+      background: #1e5a6f;
+      color: white;
+      border-radius: 40px;
+      padding: 8px 22px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-custom:hover {
+      background: #134652;
+      color: white;
+    }
+
+    .hero-icon {
+      font-size: 4rem;
+      color: #1e5a6f;
+      opacity: 0.85;
+    }
+
+    .card-hover {
+      transition: transform 0.2s, box-shadow 0.2s;
+      border-radius: 20px;
+      border: none;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .result-link-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .result-link-card .card {
+      transition: 0.2s;
+    }
+
+    .result-link-card:hover .card {
+      background: #fef9e6;
+      border-left: 4px solid #f5b042;
+    }
+
+    .notice-item {
+      background: white;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 1rem;
+      border-left: 5px solid #f5b042;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .footer-info {
+      background: #0f2c34;
+      color: #e9ecef;
+      border-top: 3px solid #f5b042;
+    }
+
+    .footer-teacher p {
+      font-size: 0.95rem;
+    }
+
+    /* Curriculum */
+    .curriculum-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .curriculum-list li {
+      padding: 0.65rem 0;
+      border-bottom: 1px dashed #dee2e6;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .curriculum-list li i {
+      color: #f5b042;
+      width: 24px;
+      margin-top: 4px;
+    }
+
+    /* Software Tags */
+    .software-tag {
+      background: #eef2f5;
+      padding: 12px 18px;
+      border-radius: 40px;
+      transition: 0.2s;
+      text-align: center;
+    }
+
+    .software-tag i {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      display: block;
+      color: #1e5a6f;
+    }
+
+    /* Teacher Cards */
+    .teachers-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .department-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .dept-badge {
+      display: inline-block;
+      background: #0f2b3d;
+      color: #facc15;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1e3c4c, #2b5e6e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subhead {
+      font-size: 1rem;
+      color: #334155;
+      margin-top: 0.5rem;
+      border-bottom: 2px solid rgba(100, 116, 139, 0.2);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      perspective: 800px;
+    }
+
+    .teacher-card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 2rem;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.2, 0, 0, 1);
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      position: relative;
+    }
+
+    .teacher-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 30px 45px -18px rgba(0, 0, 0, 0.2);
+      border-color: rgba(250, 204, 21, 0.4);
+      background: white;
+    }
+
+    .card-accent {
+      height: 8px;
+      background: linear-gradient(90deg, #facc15, #f59e0b, #facc15);
+      width: 100%;
+    }
+
+    .card-avatar {
+      text-align: center;
+      padding: 1.8rem 1.5rem 0.8rem 1.5rem;
+    }
+
+    .avatar-icon {
+      background: linear-gradient(145deg, #eef2ff, #e2e8f0);
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.2);
+      border: 3px solid white;
+    }
+
+    .avatar-icon i {
+      font-size: 3rem;
+      color: #1e4a5f;
+    }
+
+    .teacher-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 1rem;
+      color: #0c4a6e;
+      line-height: 1.3;
+    }
+
+    .teacher-dept {
+      display: inline-block;
+      background: #fef9e3;
+      color: #b45309;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      margin-top: 0.4rem;
+    }
+
+    .card-details {
+      padding: 1.2rem 1.5rem 1.5rem;
+      border-top: 1px solid #eef2ff;
+      margin-top: 0.5rem;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      color: #1e293b;
+    }
+
+    .info-row i {
+      width: 1.6rem;
+      font-size: 1rem;
+      color: #f59e0b;
+      text-align: center;
+    }
+
+    .info-row span {
+      font-weight: 500;
+      color: #334155;
+    }
+
+    .info-row a {
+      color: #0f5c6b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .info-row a:hover {
+      color: #f59e0b;
+    }
+
+    .badge-room {
+      background: #eef2ff;
+      border-radius: 20px;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #155e75;
+      margin-left: 0.25rem;
+    }
+
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 0.75rem;
+      background: #f8fafc;
+      padding: 0.7rem 1rem;
+      border-radius: 1rem;
+      gap: 0.5rem;
+    }
+
+    .contact-item {
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 40px;
+    }
+
+    .contact-item i {
+      font-size: 0.7rem;
+      color: #f59e0b;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: #475569;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 2rem;
+    }
+
+    /* Faculties Section */
+    .faculties-section {
+      margin: 3rem 0 2rem;
+    }
+
+    .faculties-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .faculties-title h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(125deg, #1e4a5f, #f5b042);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .faculties-title p {
+      color: #4b5563;
+      font-weight: 500;
+    }
+
+    .faculty-card-wrapper {
+      transition: all 0.25s ease;
+    }
+
+    .faculty-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 1.8rem 1rem;
+      text-align: center;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.25s ease;
+      border: 1px solid rgba(245, 176, 66, 0.2);
+      height: 100%;
+    }
+
+    .faculty-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 40px -18px rgba(0, 0, 0, 0.2);
+      border-color: #f5b042;
+    }
+
+    .faculty-icon {
+      font-size: 3rem;
+      background: linear-gradient(145deg, #fef9e6, #fff2df);
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .faculty-icon i {
+      color: #1e5a6f;
+      font-size: 2.7rem;
+    }
+
+    .faculty-name {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #1e3c4c;
+    }
+
+    .faculty-desc {
+      font-size: 0.85rem;
+      color: #5b6e8c;
+      margin-top: 0.5rem;
+    }
+
+    .faculty-badge {
+      display: inline-block;
+      background: #eef2ff;
+      color: #1e5a6f;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.9rem;
+      margin-top: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .faculty-name {
+        font-size: 1.2rem;
+      }
+      .faculty-icon {
+        width: 70px;
+        height: 70px;
+      }
+      .faculty-icon i {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Image Slider */
+    .image-slider-section {
+      margin: 2rem 0 1.5rem;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.12);
+    }
+
+    .slider-container {
+      position: relative;
+      width: 100%;
+      border-radius: 1.5rem;
+      overflow: hidden;
+    }
+
+    .slider-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slider-img {
+      width: 100%;
+      flex-shrink: 0;
+      object-fit: cover;
+      height: 300px;
+      display: block;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+      z-index: 10;
+    }
+
+    .slider-btn:hover {
+      background: #f5b042;
+      color: #1e3c4c;
+    }
+
+    .btn-prev {
+      left: 20px;
+    }
+
+    .btn-next {
+      right: 20px;
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 16px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      z-index: 5;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .dot.active-dot {
+      background: #f5b042;
+      transform: scale(1.2);
+      width: 12px;
+      height: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .slider-img {
+        height: 250px;
+      }
+      .slider-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+    }
+
+    /* Student Login Modal - Fully Animated */
+    .login-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .login-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .login-modal {
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      border-radius: 2rem;
+      width: 90%;
+      max-width: 420px;
+      padding: 2rem 1.8rem;
+      position: relative;
+      transform: scale(0.7);
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(245, 176, 66, 0.3);
+    }
+
+    .login-modal-overlay.active .login-modal {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #94a3b8;
+      transition: all 0.2s;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .modal-close:hover {
+      background: #fee2e2;
+      color: #ef4444;
+      transform: rotate(90deg);
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .login-avatar {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #1e5a6f, #f5b042);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      animation: loginPulse 2s infinite;
+    }
+
+    @keyframes loginPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(30, 90, 111, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 12px rgba(30, 90, 111, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(30, 90, 111, 0);
+      }
+    }
+
+    .login-avatar i {
+      font-size: 2.2rem;
+      color: white;
+    }
+
+    .login-header h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e3c4c;
+      margin-bottom: 0.25rem;
+    }
+
+    .login-header p {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    .login-input-group {
+      position: relative;
+      margin-bottom: 1.2rem;
+    }
+
+    .login-input-group input {
+      width: 100%;
+      padding: 12px 15px 12px 45px;
+      border: 2px solid #e2e8f0;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .login-input-group input:focus {
+      border-color: #f5b042;
+      box-shadow: 0 0 0 3px rgba(245, 176, 66, 0.2);
+    }
+
+    .login-input-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+    }
+
+    .login-input-group .toggle-login-password {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #94a3b8;
+    }
+
+    .login-btn-student {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(95deg, #1e5a6f, #f5b042);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-btn-student:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(30, 90, 111, 0.3);
+    }
+
+    .login-btn-student.loading {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .login-btn-student .btn-spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top: 2px solid white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .login-btn-student.loading .btn-text {
+      display: none;
+    }
+
+    .login-btn-student.loading .btn-spinner {
+      display: block;
+    }
+
+    .login-error-msg {
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 10px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      text-align: center;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .login-error-msg.show {
+      display: block;
+      animation: shake 0.4s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(-5px);
+      }
+      75% {
+        transform: translateX(5px);
+      }
+    }
+
+    .login-success-msg {
+      background: #dcfce7;
+      color: #16a34a;
+      padding: 10px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      text-align: center;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .login-success-msg.show {
+      display: block;
+    }
+
+    .login-footer-links {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.2rem;
+      font-size: 0.75rem;
+    }
+
+    .login-footer-links a {
+      color: #1e5a6f;
+      text-decoration: none;
+    }
+
+    .login-footer-links a:hover {
+      color: #f5b042;
+    }
+
+    .student-login-trigger {
+      cursor: pointer;
+      transition: all 0.2s;
+    }
